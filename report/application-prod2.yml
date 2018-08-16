@@ -1,0 +1,42 @@
+#配置程序端口，默认为8080
+server:
+  port: 8088
+   session:
+        timeout: 1800
+#数据库配置
+spring:
+  application:
+    name:
+  datasource:
+     master:
+          driverClassName: oracle.jdbc.driver.OracleDriver
+          url: jdbc:oracle:thin:@10.0.100.223:1521:aiiidb
+          username: aigroup
+          password: aigroup
+      cluster:
+        driverClassName: oracle.jdbc.driver.OracleDriver
+        url: jdbc:oracle:thin:@10.0.100.223:1521:aidbcluster
+        username: aigroup
+        password: aigroup
+  #redis配置
+  redis:
+    database: 0
+    host: 10.0.100.200
+    port: 6379
+    password:
+    timeout: 1200
+    token:
+      timeout: 2
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+ #r语言配置
+r:
+  shouyilv: /user/home/R/shouyilv.txt
+  coder:  /user/home/R/allocate.R
+#日志配置
+logging:
+  config: classpath:logback-spring.xml
+  level: com.ylcaifu.modular=DEBUG

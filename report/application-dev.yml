@@ -1,0 +1,97 @@
+#配置程序端口，默认为8080
+server:
+  port: 8011
+  session:
+    timeout: 1800
+#日志配置
+logging:
+  config: classpath:logback-spring.xml
+  level: com.ylcaifu.modular=DEBUG
+#数据库配置
+spring:
+ thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+ output:
+    ansi:
+      enabled: always
+ jackson:
+  date-format: yyyy-MM-dd HH:mm
+ cache:
+  type: ehcache
+  ehcache.config: classpath:config/ehcache.xml
+#spring apo配置
+ aop:
+  auto: true
+  proxy-target-class: false
+  isWriteLog: true #是否开启记录aop日志
+  # 初始化大小，最小，最大
+ datasource:
+  master:
+   driverClassName: oracle.jdbc.driver.OracleDriver
+   url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+   username: system
+   password: 123456
+  cluster:
+   driverClassName: oracle.jdbc.driver.OracleDriver
+   url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+   username: system
+   password: 123456
+
+
+#mybatis配置
+mybatis:
+  config-location: classpath:config/mybatis-config.xml
+#是否开启通用验证码
+mobile:
+      code.common.open: true
+     #放行ip地址
+      no.limit.ip: 10.0.10.69,127.0.0.1
+     #限制同一个手机号码1分钟发送的次数
+      one.minute.count: 1
+     #限制同一个手机号码1天内发送的次数
+      one.day.count: 3
+     #限制同一个ip地址1天发送的次数
+      ip:
+        one.day.count: 10
+##短信服务
+sms:
+  signature: 【秀实投资集团|耀莱】
+  code:
+    template: 您的验证码是XX,3分钟有效
+  verification.code.template: 你的客户XX，请及时分配
+
+  #spring apo配置
+  aop:
+      auto: true
+      proxy-target-class: false
+      isWriteLog: true #是否开启记录aop日志
+  data-sources:
+     master:
+        driverClassName: oracle.jdbc.driver.OracleDriver
+        url: jdbc:oracle:thin:@10.0.100.223:1521:aiiidb
+        username: aigroup
+        password: aigroup
+     cluster:
+        driverClassName: oracle.jdbc.driver.OracleDriver
+        url: jdbc:oracle:thin:@10.0.100.223:1521:aidbcluster
+        username: aigroup
+        password: aigroup
+  #redis配置
+  redis:
+    database: 0
+    host: 10.0.100.200
+    port: 6379
+    password:
+    timeout: 1200
+    token:
+      timeout: 2
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+ #r语言配置
+r:
+  shouyilv: /user/home/R/shouyilv.txt
+  coder:  /user/home/R/allocate.R
